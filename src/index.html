@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://unpkg.com/buefy/dist/buefy.min.css" />
   </head>
 
   <body>
-    <div id="app" style='display: flex; justify-content: center'>
+    <div id="app" style="display: flex; justify-content: center">
       <!-- Buefy components goes here -->
-      <section class="section" style='max-width: 500px; min-width: 300px;'>
+      <section class="section" style="max-width: 500px; min-width: 300px;">
         <!-- <b-field horizontal>
           <div>
             <span class='is-size-7'>{{imageUrl}}</span>
             <img :src="imageUrl" alt="cardImage">
           </div>
         </b-field> -->
-        <h1 class='title' style='text-align: center;'>RNKM run card api</h1>
-        <br>
-        <br>
-        <b-field label='image' horizontal>
-          <b-input v-model='image' type='text'></b-input>
-          <img :src="image" alt="profileImage" style='max-width: 160px'>
+        <h1 class="title" style="text-align: center;">RNKM run card api</h1>
+        <br />
+        <br />
+        <b-field label="image" horizontal>
+          <b-input v-model="image" type="text"></b-input>
+          <img :src="image" alt="profileImage" style="max-width: 160px" />
         </b-field>
-        <b-field label='mode' horizontal>
-          <b-select v-model='mode' expanded>
-            <option :value="m" v-for='m in modes'>{{m}}</option>
+        <b-field label="mode" horizontal>
+          <b-select v-model="mode" expanded>
+            <option :value="m" v-for="m in modes">{{ m }}</option>
           </b-select>
         </b-field>
-        <b-field label='name' horizontal>
-          <b-input v-model='name' type='text'></b-input>
+        <b-field label="name" horizontal>
+          <b-input v-model="name" type="text"></b-input>
         </b-field>
-        <b-field label='role' horizontal>
-          <b-input v-model='role' type='text'></b-input>
+        <b-field label="role" horizontal>
+          <b-input v-model="role" type="text"></b-input>
         </b-field>
-        <b-field label='faculty' horizontal>
-          <b-input v-model='faculty' type='text'></b-input>
+        <b-field label="faculty" horizontal>
+          <b-input v-model="faculty" type="text"></b-input>
         </b-field>
-
+        <b-field label="filename" horizontal>
+          <b-input v-model="filename" type="text"></b-input>
+        </b-field>
         <b-field horizontal>
-          <b-button type='is-info' @click='submit'>get card</b-button>
+          <b-button type="is-info" @click="submit">get card</b-button>
         </b-field>
       </section>
     </div>
@@ -53,37 +55,44 @@
     <script src="https://unpkg.com/buefy/dist/components/input"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.14/lodash.min.js"></script>
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-              modes: "staff A1 A2 B1 B2 C1 C2 D1 D2".split(" "),
-              mode: "D1",
-              role: "นักแสดง",
-              name: "ทอม HL",
-              faculty: "วิศวะฯ",
-              image: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Tom_Holland_by_Gage_Skidmore.jpg"
-            },
-            methods: {
-              submit() {
-                window.open(this.imageUrl, "_blank");
-              }
-            },
-            computed: {
-              imageUrl() {
-                const query = _.map(
-                  _.omitBy({
-                    mode: this.mode,
-                    role: this.role,
-                    name: this.name,
-                    faculty: this.faculty,
-                    image: this.image
-                  }, _.isEmpty),
-                  (v, k) => `${k}=${v}`
-                )
-                return window.encodeURI(`/image?${_.join(query, '&')}`)
-              }
-            }
-        })
+      new Vue({
+        el: '#app',
+        data: {
+          modes: 'STAFF FA FB FC FD SA SB SC SD'.split(' '),
+          mode: 'STAFF',
+          role: 'นักแสดง',
+          name: 'ทอม HL',
+          faculty: 'วิศวะฯ',
+          filename: new Date().getTime().toString(),
+          image:
+            'https://upload.wikimedia.org/wikipedia/commons/3/3c/Tom_Holland_by_Gage_Skidmore.jpg'
+        },
+        methods: {
+          submit() {
+            window.open(this.imageUrl, '_blank');
+          }
+        },
+        computed: {
+          imageUrl() {
+            const query = _.map(
+              _.omitBy(
+                {
+                  mode: this.mode,
+                  role: this.role,
+                  name: this.name,
+                  faculty: this.faculty,
+                  filename: this.filename,
+                  image: this.image
+                },
+                _.isEmpty
+              ),
+              (v, k) => `${k}=${window.encodeURIComponent(v)}`
+            );
+            return `/image?${_.join(query, '&')}`;
+            // return window.encodeURI(`/image?${_.join(query, '&')}`);
+          }
+        }
+      });
     </script>
   </body>
 </html>

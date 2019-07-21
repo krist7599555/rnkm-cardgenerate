@@ -1,2 +1,7 @@
 node_modules
 .DS_Store
+src/text-*.png
+src/storages/freshy2
+src/storages/output
+src/storages/outputZip
+src/storages/profile
