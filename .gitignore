@@ -5,3 +5,4 @@ src/storages/**
 !src/storages/*.sh
 !src/storages/*.txt
 !src/storages/*.csv
+!src/storages/*.html
