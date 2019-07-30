@@ -18,9 +18,21 @@
         </b-field> -->
         <h1 class="title" style="text-align: center;">RNKM run card api</h1>
         <br />
+        <div>
+          <label class="label">Valid Google Drive Link</label>
+          <p class="is-size-7" style="font-family: monospace">
+            https://drive.google.com/uc?export=download&id=[--------]
+          </p>
+          <p class="is-size-7" style="font-family: monospace">
+            https://drive.google.com/file/d/[--------]
+          </p>
+          <p class="is-size-7" style="font-family: monospace">
+            https://drive.google.com/file/d/[--------]/(preview|edit)
+          </p>
+        </div>
         <br />
         <b-field label="image" horizontal>
-          <b-input v-model="image" type="text"></b-input>
+          <input class='input' style="font-size: 0.5rem;" v-model="image" type="text"></input>
           <img :src="image" alt="profileImage" style="max-width: 160px" />
         </b-field>
         <b-field label="mode" horizontal>
@@ -31,15 +43,15 @@
         <b-field label="name" horizontal>
           <b-input v-model="name" type="text"></b-input>
         </b-field>
-        <b-field label="role" horizontal>
-          <b-input v-model="role" type="text"></b-input>
-        </b-field>
         <b-field label="faculty" horizontal>
           <b-input v-model="faculty" type="text"></b-input>
         </b-field>
-        <b-field label="filename" horizontal>
-          <b-input v-model="filename" type="text"></b-input>
+        <b-field label="role" horizontal>
+          <b-input v-model="role" type="text"></b-input>
         </b-field>
+        <!-- <b-field label="filename" horizontal>
+          <b-input v-model="filename" type="text"></b-input>
+        </b-field> -->
         <b-field horizontal>
           <b-button type="is-info" @click="submit">get card</b-button>
         </b-field>
@@ -63,7 +75,7 @@
           role: 'นักแสดง',
           name: 'ทอม HL',
           faculty: 'วิศวะฯ',
-          filename: new Date().getTime().toString(),
+          // filename: new Date().getTime().toString(),
           image:
             'https://upload.wikimedia.org/wikipedia/commons/3/3c/Tom_Holland_by_Gage_Skidmore.jpg'
         },

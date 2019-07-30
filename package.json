@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon ./index.js",
     "start": "node --max-old-space-size=1024 ./index.js",
-    "pm2": "PORT=9000 pm2 start ./index.js --name rnkm-card"
+    "pm2": "PORT=9000 pm2 start ./index.js --name card-generator"
   },
   "dependencies": {
     "axios": "^0.19.0",

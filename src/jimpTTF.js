@@ -1,3 +1,5 @@
+//* CONVERT TEXT TO IMAGE BY IMAGE MAGIC
+
 const im = require('gm').subClass({ imageMagick: true });
 const jimp = require('jimp');
 
