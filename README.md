@@ -1,3 +1,5 @@
 # RNKM cu103 card generator
 
-using jimp and gm
+generate card using jimp with koa server
+
+![screen shot](src/assets/screenshot/1.png)
