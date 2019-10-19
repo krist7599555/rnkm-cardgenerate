@@ -4,8 +4,8 @@ const path = require('path');
 const axios = require('axios');
 const qs = require('qs');
 
-const CSV_FILE = 'ข้อมูลรันบัตรทั้งหมด-round2.csv';
-const OUTPUT_DIR = 'output2/';
+const CSV_FILE = 'ย้ายบ้าน-2.csv';
+const OUTPUT_DIR = 'output4/';
 const SERVER_PORT = 9000;
 
 const storage = p => path.resolve(__dirname, `./storages/${p}`);

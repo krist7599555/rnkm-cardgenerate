@@ -6,3 +6,5 @@ src/storages/**
 !src/storages/*.txt
 !src/storages/*.csv
 !src/storages/*.html
+src/storages/output*
+src/storages/output**

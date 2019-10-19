@@ -32,10 +32,16 @@ router
       //* FROM LOCAL DISK
       image = path.resolve(__dirname, `./storages/input/${image}`);
     } else if (image.includes('drive.google.com')) {
+      console.log('GGD');
       //* FROM GOOGLE DRIVE
       const URL1 = 'https://drive.google.com/file/d/';
       if (image.includes(URL1)) {
         const code = image.replace(URL1, '').split('/')[0];
+        image = 'https://drive.google.com/uc?export=download&id=' + code;
+      }
+      const URL2 = 'https://drive.google.com/open?id=';
+      if (image.includes(URL2)) {
+        const code = image.split('?id=')[1];
         image = 'https://drive.google.com/uc?export=download&id=' + code;
       }
       ctx.assert(
